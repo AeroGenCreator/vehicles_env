@@ -3,8 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-df = pd.read_csv(
-    r'D:\workspace_data_science\repositorios_clonados\vehicles_env\vehicles_us.csv')
+df = pd.read_csv('vehicles_us.csv')
 # Agregando el dato -1 para tanques desconocidos
 df['cylinders'] = df['cylinders'].fillna(-1)
 # Filtrando los tanques desconocidos:
