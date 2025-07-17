@@ -12,6 +12,8 @@ df2 = df[~(df['cylinders'] == -1)]
 # El encabezado con streamlit
 st.header('Graficas Intercativas "Vehiculos en USA"')
 
+# Explicacion breve de la interfaz
+st.write('Marque una casilla:')
 # Implementacion de una casilla que permita la creacion del Histograma
 hist1 = st.checkbox('Construccion de Histograma')
 scat1 = st.checkbox('Construccion de Grafico de Dispersion')
@@ -20,11 +22,19 @@ if hist1:
     # Construccion del histograma con plotly
     st.write('Histograma a continuacion:')
     Histogram1 = go.Figure(
-        data=[go.Histogram(x=df2['cylinders'], marker_color='skyblue')])
+        data=[go.Histogram(x=df2['cylinders'], nbinsx=24)])
     # Titulo:
     Histogram1.update_layout(
         title='Frecuencias en la capacidad de "Tanques"',
-        title_x=0.5,
         xaxis_title='Capacidad del "Tanque"',
         yaxis_title='Cantidad de Unidades Vehiculares en "Miles"')
-    st.plotly_chart(Histogram1)
+    st.plotly_chart(Histogram1, use_container_width=True)
+
+if scat1:
+    # Construccion del scatter graph con plotly
+    st.write('Grafico de dispersion a continuacion:')
+    scatter1 = go.Figure(data=[go.Scatter(
+        x=df2['odometer'], y=df2['price'], mode='markers', marker_color='orange')])
+    scatter1.update_layout(
+        title_text='Relacion entre "Gasto Total" y "Capacidad de Tanques"')
+    st.plotly_chart(scatter1, use_container_width=True)
