@@ -37,7 +37,7 @@ if scat1:
     scatter1 = go.Figure(data=[go.Scatter(
         x=df2['odometer'], y=df2['price'], mode='markers', marker_color='orange')])
     scatter1.update_layout(
-        title_text='Relacion entre "Gasto Total" y "Capacidad de Tanques"')
+        title_text='Relacion entre "Gasto Total" y "Millas"')
     st.plotly_chart(scatter1, use_container_width=True)
 
 if table1:
