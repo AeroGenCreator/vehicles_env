@@ -17,6 +17,7 @@ st.write('Marque una casilla:')
 # Implementacion de una casilla que permita la creacion del Histograma
 hist1 = st.checkbox('Construccion de Histograma')
 scat1 = st.checkbox('Construccion de Grafico de Dispersion')
+table1 = st.checkbox('Mostrar "Tabla de Datos Original"')
 
 if hist1:
     # Construccion del histograma con plotly
@@ -38,3 +39,7 @@ if scat1:
     scatter1.update_layout(
         title_text='Relacion entre "Gasto Total" y "Capacidad de Tanques"')
     st.plotly_chart(scatter1, use_container_width=True)
+
+if table1:
+    # Tabla armada con pandas
+    st.dataframe(df2)
